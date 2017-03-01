@@ -1,0 +1,55 @@
+body {
+    background-color: #666666;
+}
+
+.all-content-wrapper {
+    text-align: center;
+}
+
+.add-planet-panel {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: white
+}
+
+.add-planet-button {
+    margin-top: 15px
+}
+
+.planets-exit-panel {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.user-info-table-panel {
+    background-color: white;
+    text-align: center;
+}
+
+.planets-table-panel {
+    background-color: white;
+    max-height: 300px;
+    overflow-y: auto;
+    visibility: hidden;
+}
+
+.message-panel {
+    width: 300px; margin: auto
+}
+
+.authorization-panel {
+    margin-top: 100px
+}
+
+.registration-panel {
+    background-color: white;
+    width: 300px;
+    margin: 100px auto auto auto;
+    text-align: left;
+}
+
+.canvas-wrapper {
+    position: relative
+}
