@@ -7,6 +7,10 @@ import java.util.List;
 public interface PlanetServiceInterface {
 
     void addPlanet(Planet planet);
+
     List<Planet> findPlanets(Long userId);
+
     boolean deletePlanet(Planet planet);
+
+    void updatePlanet(Planet planet);
 }

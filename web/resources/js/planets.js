@@ -5,6 +5,7 @@ function Planet(radius, orbit, speed, color, name) {
     this.orbit = orbit;
     this.speed = speed;
     this.name = name;
+    this.id = -1;
 
     this.angle = 0;
     this.xCurrent = 0;
@@ -38,6 +39,42 @@ function Planet(radius, orbit, speed, color, name) {
 
     this.getName = function () {
         return this.name;
+    };
+
+    this.getOrbit = function () {
+        return this.orbit;
+    };
+
+    this.getSpeed = function () {
+        return this.speed;
+    };
+
+    this.setRadius = function (radius) {
+        this.radius = radius;
+    };
+
+    this.setColor = function (color) {
+        this.color = color;
+    };
+
+    this.setName = function (name) {
+        this.name = name;
+    };
+
+    this.setOrbit = function (orbit) {
+        this.orbit = orbit;
+    };
+
+    this.setSpeed = function (speed) {
+        this.speed = speed;
+    };
+
+    this.setId = function (id) {
+        this.id = id;
+    };
+
+    this.getId = function () {
+        return this.id;
     }
 }
 
@@ -122,19 +159,34 @@ function Drawer(canvas, planets, x, y) {
         }
     };
 
+    this.edit = function (oldName, newPlanet) {
+        var oldPlanet = this.has(oldName);
+
+        if (oldPlanet == null) {
+            console.error("Error, no such situation expected.");
+            return null;
+        } else {
+            oldPlanet.setColor(newPlanet.getColor());
+            oldPlanet.setOrbit(newPlanet.getOrbit());
+            oldPlanet.setName(newPlanet.getName());
+            oldPlanet.setRadius(newPlanet.getRadius());
+            oldPlanet.setSpeed(newPlanet.getSpeed());
+            oldPlanet.setId(oldPlanet.getId());
+            return oldPlanet;
+        }
+    };
+
     this.add = function (planet) {
         this.planets.push(planet);
     };
 
     this.has = function (name) {
         for (var i = 0; i < this.planets.length; i++) {
-            console.log(name + " " + this.planets[i].getName());
             if (name == planets[i].getName()) {
-                console.log("true");
-                return true;
+                return planets[i];
             }
         }
-        return false;
+        return null;
     };
 }
 

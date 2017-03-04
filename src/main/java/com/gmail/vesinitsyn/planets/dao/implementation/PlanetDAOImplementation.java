@@ -24,18 +24,9 @@ public class PlanetDAOImplementation implements PlanetDAOInterface {
     @Resource
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private UserServiceInterface userService;
-
-    @Autowired
-    private UserDAOInterface userDAO;
-
     @Transactional
     public void insertPlanet(Planet planet) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String userName = auth.getName();
-        planet.setUser(userService.findUser(userName));
-        sessionFactory.getCurrentSession().saveOrUpdate(planet);
+        sessionFactory.getCurrentSession().save(planet);
     }
 
     @Transactional
@@ -56,5 +47,11 @@ public class PlanetDAOImplementation implements PlanetDAOInterface {
 
     public List<Planet> selectPlanets(Long userId) {
         return null;
+    }
+
+    @Transactional
+    public void update(Planet planet) {
+        Session session = sessionFactory.getCurrentSession();
+        session.merge(planet);
     }
 }

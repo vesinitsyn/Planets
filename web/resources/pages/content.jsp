@@ -41,8 +41,12 @@
                 <label for="planetColor">Цвет</label>
                 <input type="color" id="planetColor" class="form-control">
             </div>
-            <button id="addPlanetButton" type="button"
-                    class="add-planet-button btn btn-default">Создать
+            <button id="addPlanetButton" type="button" class="add-planet-button btn btn-default"
+            >Создать
+            </button>
+            <button id="editPlanetButton" type="button" disabled
+                    class="add-planet-button btn btn-default"
+            >Сохранить
             </button>
         </form>
     </div>
@@ -93,11 +97,17 @@
 <script>
     $(document).ready(function () {
         drawer.start();
+        var planet;
         <c:forEach var="planet" items="${planets}">
-        addPlanet('<c:out value="${planet.name}"/>', <c:out value="${planet.radius}"/>,
-                <c:out value="${planet.orbit}"/>, <c:out value="${planet.speed}"/>,
-                '<c:out value="${planet.color}"/>');
+        planet = new Planet(<c:out value="${planet.radius}"/>, <c:out value="${planet.orbit}"/>,
+                <c:out value="${planet.speed}"/>,
+                '<c:out value="${planet.color}"/>',
+                '<c:out value="${planet.name}"/>');
+        planet.setId(<c:out value="${planet.id}"/>);
+
+        addPlanet(planet);
         </c:forEach>
-    });
+    })
+    ;
 </script>
 </html>
